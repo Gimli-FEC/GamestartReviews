@@ -1,5 +1,5 @@
 {
-  "name": "jay-service",
+  "name": "gamestart-reviews",
   "description": "> Project description",
   "author": "Jay Barr",
   "license": "ISC",
@@ -12,16 +12,18 @@
     "mysql": "^2.18.1"
   },
   "devDependencies": {
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git"
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
   },
   "version": "1.0.0",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Gimli-FEC/jay-service.git"
+    "url": "git+https://github.com/Gimli-FEC/gamestart-reviews.git"
   },
   "bugs": {
-    "url": "https://github.com/Gimli-FEC/jay-service/issues"
+    "url": "https://github.com/Gimli-FEC/gamestart-reviews/issues"
   },
-  "homepage": "https://github.com/Gimli-FEC/jay-service#readme"
+  "homepage": "https://github.com/Gimli-FEC/gamestart-reviews#readme"
 }
