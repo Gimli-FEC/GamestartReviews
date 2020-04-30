@@ -7,7 +7,9 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "build": "babel client -d public"
+    "build": "babel client -d public",
+    "start": "nodemon server/index.js",
+    "react-dev": "webpack --watch --mode=development"
   },
   "dependencies": {
     "express": "^4.17.1",
@@ -15,8 +17,10 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.5",
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-react": "^7.9.4",
+    "babel-loader": "^8.1.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
     "nodemon": "^2.0.3",
     "webpack": "^4.43.0",
