@@ -13,6 +13,8 @@
     "seed": "node database/seeding.js"
   },
   "dependencies": {
+    "airbnb-browser-shims": "^3.3.0",
+    "babel-preset-airbnb": "^5.0.0",
     "express": "^4.17.1",
     "faker": "^4.1.0",
     "mysql": "^2.18.1"

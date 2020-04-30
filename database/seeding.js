@@ -24,7 +24,7 @@ for (let i=1; i<101; i++) {
     for (let j=1; j<11; j++) {
         let review = {
             product_id: i,
-            user_id: i * j,
+            user_id: (i-1) * 10 + j,
             date: faker.date.past(2),
             body: faker.lorem.paragraphs(Math.floor(Math.random()*3)+1, "\n"),
             recommended: Math.floor(Math.random()*2),
