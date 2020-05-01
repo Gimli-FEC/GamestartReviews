@@ -1,14 +1,18 @@
 class App extends React.Component {
 
-    constructor(props) {
-        super(props);
-    }
+  constructor(props) {
+    super(props);
+  }
 
-    render() {
-        return (
-            <div>Works!!!</div>
-        )
-    }
+  componentDidMount() {
+    fetch()
+  }
+
+  render() {
+    return (
+      <div>Works!!!</div>
+    )
+  }
 };
 
 ReactDOM.render(<App />, document.getElementById('app'));
