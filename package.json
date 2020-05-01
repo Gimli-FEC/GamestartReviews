@@ -9,10 +9,12 @@
   "scripts": {
     "build": "babel client -d public",
     "start": "nodemon server/index.js",
-    "react-dev": "webpack --watch --mode=development"
+    "react-dev": "webpack --watch --mode=development",
+    "seed": "node database/seeding.js"
   },
   "dependencies": {
     "express": "^4.17.1",
+    "faker": "^4.1.0",
     "mysql": "^2.18.1"
   },
   "devDependencies": {

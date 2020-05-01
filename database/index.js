@@ -8,4 +8,3 @@ var db = mysql.createConnection({
 })
 
 db.connect();
-
