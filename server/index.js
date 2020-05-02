@@ -12,7 +12,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 app.listen(PORT, () => console.log(`Listening at http://localhost:${PORT}`));
 
-app.get('/:id', ({ id }, res) => {
+app.get('/:id', ({ params: { id } }, res) => {
   db.getReviews(id, (err, data) => {
     if (err) {
       res.sendStatus(500);
