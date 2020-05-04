@@ -1,3 +1,5 @@
+import Review from './components/Review.jsx';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -23,7 +25,7 @@ class App extends React.Component {
     }
 
   render() {
-    const listReviews = this.state.reviews.map( review => <div>{review.body}</div>);
+    const listReviews = this.state.reviews.map( (review, index) => <Review key={index.toString()} review={review} />);
     return (<div>{listReviews}</div>)
   }
 };
