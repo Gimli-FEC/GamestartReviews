@@ -1,14 +1,25 @@
 import React from 'react';
+import App from './client/components/App'
+import renderer from 'react-test-renderer';
+import { cleanup, fireEvent, render} from '@testing-library/react';
 
-const test = require('jest');
-const app = require('./client/index.jsx');
+// import { App } from './client';
+ 
+test('Fake Test', () => { expect(true).toBeTruthy(); });
 
-test('pulls id from URL query params', () => {
-  testURL('http://localhost:3003/?id=33');
-  expect(app.getIdFromURL()).toBe('33');
+// describe('App', () => {
+//   test('snapshot renders', () => {
+//     const component = renderer.create(<App />);
+//     let tree = component.toJSON();
+//     expect(tree).toMatchSnapshot();
+//   })
+// })
+
+test('App renders correctly', () => {
+  const component = renderer.create(<App />,);
+  let tree=component.toJSON();
+  console.log(tree);
+  expect(tree).toMatchSnapshot();
 });
 
-test('pulls id from URL query params', () => {
-  testURL('http://localhost:3003/?id=33');
-  expect(getIdFromURL()).toBe('33');
-});
+
