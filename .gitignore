@@ -2,3 +2,4 @@ node_modules/
 public/main.js
 public/index.js
 __snapshots__
+package-lock.json

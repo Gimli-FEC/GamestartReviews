@@ -11,7 +11,6 @@ export default class App extends React.Component {
 
   componentDidMount() {
     const urlParams = new URLSearchParams(window.location.search);
-    // console.log(urlParams.get('id'));
     const id = urlParams.get('id');
     const { reviews } = this.state;
     fetch(`/${id}`, {
@@ -21,8 +20,7 @@ export default class App extends React.Component {
       .then((resp) => resp.json())
       .then((data) => this.setState({
         reviews: data,
-      }))
-      .then(() => console.log(reviews));
+      }));
   }
 
   render() {
