@@ -1,2 +1,4 @@
 node_modules/
 public/main.js
+public/index.js
+__snapshots__
