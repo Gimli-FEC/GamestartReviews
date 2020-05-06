@@ -12,7 +12,6 @@ export default class App extends React.Component {
   componentDidMount() {
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get('id');
-    const { reviews } = this.state;
     fetch(`/${id}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },

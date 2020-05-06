@@ -11,7 +11,8 @@
     "start": "nodemon server/index.js",
     "react-dev": "webpack --watch --mode=development",
     "seed": "node database/seeding.js",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "airbnb-browser-shims": "^3.3.0",
@@ -43,8 +44,10 @@
     "eslint-plugin-react-hooks": "^2.5.1",
     "jest": "^26.0.0",
     "jest-styled-components": "^7.0.2",
+    "node-fetch": "^2.6.0",
     "nodemon": "^2.0.3",
     "react-test-renderer": "^16.13.1",
+    "supertest": "^4.0.2",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
   },
