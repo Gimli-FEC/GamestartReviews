@@ -1,4 +1,6 @@
 import React from 'react';
+import Avatar from './Avatar';
+import Stars from './Stars';
 import PropTypes from 'prop-types';
 
 function Review({
@@ -7,8 +9,9 @@ function Review({
 }) {
   return (
     <li className="review">
-      <img alt="user-avatar" src={avatar} />
+      <Avatar avatar={avatar} />
       <p>
+        <Stars ratingOverall={ratingOverall} />
         <span>{name}</span>
         <span>{age}</span>
         <span>{date}</span>
@@ -16,7 +19,6 @@ function Review({
         <span>{body}</span>
         <span>{recommended}</span>
         <span>{purchaseType}</span>
-        <span>{ratingOverall}</span>
         <span>{ratingGraphics}</span>
         <span>{ratingGameplay}</span>
         <span>{ratingAppeal}</span>
