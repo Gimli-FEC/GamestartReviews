@@ -3,6 +3,7 @@ import Avatar from './Avatar';
 import Stars from './Stars';
 import PropTypes from 'prop-types';
 import NameDate from './NameDate';
+import Body from './Body';
 
 function Review({
   avatar, name, age, date, title, body, recommended, purchaseType,
@@ -11,17 +12,15 @@ function Review({
   return (
     <li className="review">
       <Avatar avatar={avatar} />
-      <p>
+      <div>
         <Stars ratingOverall={ratingOverall} />
         <NameDate name={name} age={age} date={date} />
-        <span>{title}</span>
-        <span>{body}</span>
-        <span>{recommended}</span>
+        <Body title={title} body={body} recommended={recommended} />
         <span>{purchaseType}</span>
         <span>{ratingGraphics}</span>
         <span>{ratingGameplay}</span>
         <span>{ratingAppeal}</span>
-      </p>
+      </div>
     </li>
   );
 }

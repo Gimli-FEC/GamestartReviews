@@ -19,5 +19,5 @@ function getReviews(id, cb) {
 }
 
 module.exports = {
-  getReviews,
+  getReviews, db,
 };
