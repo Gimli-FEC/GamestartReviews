@@ -2,6 +2,7 @@ import React from 'react';
 import Avatar from './Avatar';
 import Stars from './Stars';
 import PropTypes from 'prop-types';
+import NameDate from './NameDate';
 
 function Review({
   avatar, name, age, date, title, body, recommended, purchaseType,
@@ -12,9 +13,7 @@ function Review({
       <Avatar avatar={avatar} />
       <p>
         <Stars ratingOverall={ratingOverall} />
-        <span>{name}</span>
-        <span>{age}</span>
-        <span>{date}</span>
+        <NameDate name={name} age={age} date={date} />
         <span>{title}</span>
         <span>{body}</span>
         <span>{recommended}</span>
