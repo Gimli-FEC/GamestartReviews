@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import Review from './Review';
+
+const SortSelect = styled.div`
+  float: right;
+  margin: 20px;
+`;
+
 
 const App = (props) => {
   const [reviews, setReviews] = useState([]);
+  const [sortSelected, setSortSelected] = useState('Most Recent');
 
   const getUrlParams = () => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -40,7 +48,23 @@ const App = (props) => {
     ),
   );
 
-  return (<div>{listReviews}</div>);
+  const handleSortChange = (e) => {
+    setSortSelected(e.target.value);
+  };
+
+  return (
+    <div>
+      <SortSelect>
+        <span>Sort by: </span>
+        <select value={sortSelected} onChange={handleSortChange}>
+          <option value="Most Recent">Most Recent</option>
+          <option value="Highest to Lowest Rating">Highest to Lowest Rating</option>
+          <option value="Lowest to Highest Rating">Lowest to Highest Rating</option>
+        </select>
+      </SortSelect>
+      {listReviews}
+    </div>
+  );
 };
 
 export default App;

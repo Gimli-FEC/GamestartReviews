@@ -13,6 +13,9 @@ const ReviewGrid = styled.li`
   grid-gap: 10px;
   background-color: #fff;
   color: #444;
+  border-top: 1px lightgray solid;
+  padding: 20px;
+  clear: both;
 `;
 
 function Review({

@@ -8,6 +8,8 @@ CREATE TABLE users (
     id int NOT NULL AUTO_INCREMENT,
     name TINYTEXT,
     age TINYINT(4),
+    gender BOOL,
+    location TINYTEXT,
     avatar TINYTEXT,
     PRIMARY KEY (id)
 );
@@ -21,6 +23,7 @@ CREATE TABLE reviews (
     body TEXT,
     recommended BOOL,
     purchase_type BOOL,
+    verified BOOL,
     rating_overall TINYINT(5),
     rating_graphics TINYINT(5),
     rating_gameplay TINYINT(5),
