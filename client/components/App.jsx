@@ -7,26 +7,34 @@ const SortSelect = styled.div`
   margin: 20px;
 `;
 
-
 const App = (props) => {
   const [reviews, setReviews] = useState([]);
   const [sortSelected, setSortSelected] = useState('Most Recent');
+  const [productId, setProductId] = useState();
 
   const getUrlParams = () => {
     const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get('id');
+    const id = urlParams.get('id');
+    setProductId(id);
+    return id;
   };
 
-  const getReviewsForId = (id) => {
-    fetch(`/${id}`, {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-    })
-      .then((resp) => resp.json())
-      .then((data) => setReviews(data));
+  const getReviewsForId = () => {
+    if (productId) {
+      const sort = (sortSelected === 'Most Recent') ? 'date' : 'rating_overall';
+      const order = (sortSelected === 'Lowest to Highest Rating') ? 'ASC' : 'DESC';
+      fetch(`/${productId}/${sort}/${order}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      })
+        .then((resp) => resp.json())
+        .then((data) => setReviews(data));
+    }
   };
 
-  useEffect(() => getReviewsForId(getUrlParams()), []);
+  useEffect(() => {
+    getReviewsForId(getUrlParams());
+  }, [productId, sortSelected]);
 
   const listReviews = reviews.map(
     (review, index) => (
@@ -48,9 +56,7 @@ const App = (props) => {
     ),
   );
 
-  const handleSortChange = (e) => {
-    setSortSelected(e.target.value);
-  };
+  const handleSortChange = (e) => setSortSelected(e.target.value);
 
   return (
     <div>
