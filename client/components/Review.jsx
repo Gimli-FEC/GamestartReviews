@@ -5,26 +5,34 @@ import Stars from './Stars';
 import NameDate from './NameDate';
 import Body from './Body';
 import Bars from './Bars';
+import styled from 'styled-components';
+
+const ReviewGrid = styled.li`
+  display: grid;
+  grid-template-columns: 1fr 5fr 2fr;
+  grid-gap: 10px;
+  background-color: #fff;
+  color: #444;
+`;
 
 function Review({
   avatar, name, age, date, title, body, recommended, purchaseType,
   ratingOverall, ratingGraphics, ratingGameplay, ratingAppeal,
 }) {
   return (
-    <li className="review">
+    <ReviewGrid>
       <Avatar avatar={avatar} />
       <div>
         <Stars ratingOverall={ratingOverall} />
-        <NameDate name={name} age={age} date={date} />
+        <NameDate name={name} date={date} age={age} purchaseType={purchaseType} />
         <Body title={title} body={body} recommended={recommended} />
-        <span>{purchaseType}</span>
       </div>
       <Bars
         ratingGraphics={ratingGraphics}
         ratingGameplay={ratingGameplay}
         ratingAppeal={ratingAppeal}
       />
-    </li>
+    </ReviewGrid>
   );
 }
 
