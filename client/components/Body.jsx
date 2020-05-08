@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 import styled from 'styled-components';
 
 const Title = styled.h2`
@@ -16,13 +15,15 @@ const Body = ({ title, body, recommended }) => (
     { recommended
       ? (
         <p>
-          <b>Yes, </b>
+          <i className="fas fa-check-circle" />
+          <b> Yes, </b>
           I recommend this product.
         </p>
       )
       : (
         <p>
-          <b>No, </b>
+          <i className="fas fa-times-circle" />
+          <b> No, </b>
           I do not recommend this product.
         </p>
       )}

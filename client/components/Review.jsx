@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Avatar from './Avatar';
 import Stars from './Stars';
-import PropTypes from 'prop-types';
 import NameDate from './NameDate';
 import Body from './Body';
+import Bars from './Bars';
 
 function Review({
   avatar, name, age, date, title, body, recommended, purchaseType,
@@ -17,10 +18,12 @@ function Review({
         <NameDate name={name} age={age} date={date} />
         <Body title={title} body={body} recommended={recommended} />
         <span>{purchaseType}</span>
-        <span>{ratingGraphics}</span>
-        <span>{ratingGameplay}</span>
-        <span>{ratingAppeal}</span>
       </div>
+      <Bars
+        ratingGraphics={ratingGraphics}
+        ratingGameplay={ratingGameplay}
+        ratingAppeal={ratingAppeal}
+      />
     </li>
   );
 }
