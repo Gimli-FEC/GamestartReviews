@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 import Review from './Review';
 import DropDown from './DropDown';
 import ReviewPagination from './ReviewPagination';
 import PaginationButtons from './PaginationButtons';
+import Button from './Button';
+import Filters from './Filters';
 
 const Grid = styled.div`
   display: grid;
@@ -12,7 +16,6 @@ const Grid = styled.div`
   grid-gap: 10px;
   padding: 20px;
 `;
-
 
 const App = (props) => {
   const REVIEWS_PER_PAGE = 5;
@@ -22,6 +25,7 @@ const App = (props) => {
   const [sortSelected, setSortSelected] = useState('Most Recent');
   const [productId, setProductId] = useState();
   const [reviewsOffset, setReviewsOffset] = useState(0);
+  const [showFilters, setShowFilters] = useState(false);
 
   const getUrlParams = () => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -80,14 +84,22 @@ const App = (props) => {
     setReviewsOffset(newOffset);
   };
 
+  const toggleFilters = () => setShowFilters(!showFilters);
+
   const nextActive = reviewsOffset + REVIEWS_PER_PAGE < totalReviews;
   const prevActive = !!reviewsOffset;
+  const filterButton = <FontAwesomeIcon icon={faBars} />;
+  const filters = showFilters && <Filters />;
 
   return (
     <div>
       <Grid>
         <ReviewPagination reviewsOffset={reviewsOffset} totalReviews={totalReviews} reviewsPerPage={REVIEWS_PER_PAGE} />
-        <DropDown handleSortChange={handleSortChange} />
+        <div>
+          <Button active buttonText={filterButton} mouseClick={toggleFilters} />
+          <DropDown handleSortChange={handleSortChange} />
+        </div>
+        {filters}
       </Grid>
       {listReviews}
       <Grid>

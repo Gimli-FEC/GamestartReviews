@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const ButtonBox = styled.button`
-  min-width: 40px;
-  height: 40px;
+  min-width: 36px;
+  height: 32px;
   border: none;
   text-align: center;
   float: right;
   margin: 1px;
+  margin-top: 13px;
   background-color: whitesmoke;
   color: lightgray;
   ${({ active }) => active
