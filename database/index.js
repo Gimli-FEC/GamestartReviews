@@ -8,9 +8,9 @@ const db = mysql.createConnection({
 
 db.connect();
 
-function getReviews({ id, sort, order }, cb) {
+function getReviews({ id, sort, order, offset, numPerPage }, cb) {
   console.log(id, sort, order);
-  db.query(`SELECT * from reviews r, users u WHERE r.user_id = u.id AND r.product_id = ${id} ORDER BY ${sort} ${order} LIMIT 5`, (err, data) => {
+  db.query(`SELECT * from reviews r, users u WHERE r.user_id = u.id AND r.product_id = ${id} ORDER BY ${sort} ${order} LIMIT ${offset}, ${numPerPage}`, (err, data) => {
     if (err) {
       console.log(`Error retrieving records from database: ${err}`);
       cb(err);

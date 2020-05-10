@@ -24,7 +24,7 @@ const Bars = ({ ratingGraphics, ratingGameplay, ratingAppeal }) => {
           <svg height="8" width="20%" key={index.toString()}>
             <polygon
               points="1,0 99,0 99,8 1,8"
-              style={{ fill: 'red' }}
+              style={{ fill: '#da291c' }}
             />
           </svg>
         ))}

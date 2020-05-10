@@ -16,7 +16,7 @@ const Stars = ({ ratingOverall }) => {
           <polygon
             points="100,10 40,198 190,78 10,78 160,198"
             transform="scale(.1)"
-            style={{ fill: 'red', fillRule: 'nonzero' }}
+            style={{ fill: '#da291c', fillRule: 'nonzero' }}
           />
         </svg>
       ))}
