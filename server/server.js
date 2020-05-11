@@ -19,4 +19,14 @@ app.get('/:id/:sort/:order/:offset/:numPerPage', ({ params }, res) => {
   });
 });
 
+app.get('/count/:id', ({ params: { id } }, res) => {
+  db.getCount(id, (err, data) => {
+    if (err) {
+      res.sendStatus(500);
+    } else {
+      res.send(data);
+    }
+  });
+});
+
 module.exports = app;
