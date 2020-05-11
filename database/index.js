@@ -8,8 +8,9 @@ const db = mysql.createConnection({
 
 db.connect();
 
-function getReviews({ id, sort, order, offset, numPerPage }, cb) {
-  console.log(id, sort, order);
+function getReviews({
+  id, sort, order, offset, numPerPage,
+}, cb) {
   db.query(`SELECT * from reviews r, users u WHERE r.user_id = u.id AND r.product_id = ${id} ORDER BY ${sort} ${order} LIMIT ${offset}, ${numPerPage}`, (err, data) => {
     if (err) {
       console.log(`Error retrieving records from database: ${err}`);
@@ -19,6 +20,15 @@ function getReviews({ id, sort, order, offset, numPerPage }, cb) {
   });
 }
 
+function getCount(id, cb) {
+  db.query(`SELECT count(*) from reviews r, users u WHERE r.user_id = u.id AND r.product_id = ${id}`, (err, data) => {
+    if (err) {
+      console.log(`Error retrieving records from database: ${err}`);
+      cb(err);
+    }
+    cb(null, data);
+  });
+}
 module.exports = {
-  getReviews, db,
+  getReviews, getCount, db,
 };

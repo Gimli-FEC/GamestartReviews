@@ -19,13 +19,13 @@ const Grid = styled.div`
 
 const App = (props) => {
   const REVIEWS_PER_PAGE = 5;
-  const totalReviews = 1000;
 
   const [reviews, setReviews] = useState([]);
   const [sortSelected, setSortSelected] = useState('Most Recent');
   const [productId, setProductId] = useState();
   const [reviewsOffset, setReviewsOffset] = useState(0);
   const [showFilters, setShowFilters] = useState(false);
+  const [totalReviews, setTotalReviews] = useState(0);
 
   const getUrlParams = () => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -34,22 +34,38 @@ const App = (props) => {
     return id;
   };
 
+  const getFromApi = (pathString, cb) => {
+    fetch(pathString, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    })
+      .then((resp) => resp.json())
+      .then((data) => cb(data));
+  };
+
   const getReviewsForId = () => {
     if (productId) {
       const sort = (sortSelected === 'Most Recent') ? 'date' : 'rating_overall';
       const order = (sortSelected === 'Lowest to Highest Rating') ? 'ASC' : 'DESC';
-      fetch(`/${productId}/${sort}/${order}/${reviewsOffset}/${REVIEWS_PER_PAGE}`, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-      })
-        .then((resp) => resp.json())
-        .then((data) => setReviews(data));
+      getFromApi(`/${productId}/${sort}/${order}/${reviewsOffset}/${REVIEWS_PER_PAGE}`, setReviews);
+    }
+  };
+
+  const pullTotalFromJson = (data) => {
+    setTotalReviews(data[0]['count(*)']);
+  };
+
+  const getTotalReviewsCount = () => {
+    if (productId) {
+      getFromApi(`/count/${productId}`, pullTotalFromJson);
     }
   };
 
   useEffect(() => {
     getReviewsForId(getUrlParams());
   }, [productId, sortSelected, reviewsOffset]);
+
+  useEffect(() => getTotalReviewsCount(productId), [productId]);
 
   const listReviews = reviews.map(
     (review, index) => (
@@ -71,7 +87,10 @@ const App = (props) => {
     ),
   );
 
-  const handleSortChange = (e) => setSortSelected(e.target.innerText);
+  const handleSortChange = (e) => {
+    setSortSelected(e.target.innerText);
+    setReviewsOffset(0);
+  };
 
   const prevPage = () => {
     const newOffset = reviewsOffset - REVIEWS_PER_PAGE < 0 ? 0 : reviewsOffset - REVIEWS_PER_PAGE;
