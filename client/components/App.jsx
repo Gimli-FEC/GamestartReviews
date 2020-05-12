@@ -1,16 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Review from './Review';
 
-const SortSelect = styled.div`
-  float: right;
-  margin: 20px;
+import Review from './Review';
+import DropDown from './DropDown';
+import ReviewPagination from './ReviewPagination';
+import PaginationButtons from './PaginationButtons';
+
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  padding: 20px;
 `;
 
+
 const App = (props) => {
+  const REVIEWS_PER_PAGE = 5;
+  const totalReviews = 1000;
+
   const [reviews, setReviews] = useState([]);
   const [sortSelected, setSortSelected] = useState('Most Recent');
   const [productId, setProductId] = useState();
+  const [reviewsOffset, setReviewsOffset] = useState(0);
 
   const getUrlParams = () => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -23,7 +34,7 @@ const App = (props) => {
     if (productId) {
       const sort = (sortSelected === 'Most Recent') ? 'date' : 'rating_overall';
       const order = (sortSelected === 'Lowest to Highest Rating') ? 'ASC' : 'DESC';
-      fetch(`/${productId}/${sort}/${order}`, {
+      fetch(`/${productId}/${sort}/${order}/${reviewsOffset}/${REVIEWS_PER_PAGE}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       })
@@ -34,7 +45,7 @@ const App = (props) => {
 
   useEffect(() => {
     getReviewsForId(getUrlParams());
-  }, [productId, sortSelected]);
+  }, [productId, sortSelected, reviewsOffset]);
 
   const listReviews = reviews.map(
     (review, index) => (
@@ -56,19 +67,33 @@ const App = (props) => {
     ),
   );
 
-  const handleSortChange = (e) => setSortSelected(e.target.value);
+  const handleSortChange = (e) => setSortSelected(e.target.innerText);
+
+  const prevPage = () => {
+    const newOffset = reviewsOffset - REVIEWS_PER_PAGE < 0 ? 0 : reviewsOffset - REVIEWS_PER_PAGE;
+    setReviewsOffset(newOffset);
+  };
+
+  const nextPage = () => {
+    const atTheEnd = totalReviews - REVIEWS_PER_PAGE < 0 ? 0 : totalReviews - REVIEWS_PER_PAGE
+    const newOffset = reviewsOffset + REVIEWS_PER_PAGE > totalReviews ? atTheEnd : reviewsOffset + REVIEWS_PER_PAGE;
+    setReviewsOffset(newOffset);
+  };
+
+  const nextActive = reviewsOffset + REVIEWS_PER_PAGE < totalReviews;
+  const prevActive = !!reviewsOffset;
 
   return (
     <div>
-      <SortSelect>
-        <span>Sort by: </span>
-        <select value={sortSelected} onChange={handleSortChange}>
-          <option value="Most Recent">Most Recent</option>
-          <option value="Highest to Lowest Rating">Highest to Lowest Rating</option>
-          <option value="Lowest to Highest Rating">Lowest to Highest Rating</option>
-        </select>
-      </SortSelect>
+      <Grid>
+        <ReviewPagination reviewsOffset={reviewsOffset} totalReviews={totalReviews} reviewsPerPage={REVIEWS_PER_PAGE} />
+        <DropDown handleSortChange={handleSortChange} />
+      </Grid>
       {listReviews}
+      <Grid>
+        <ReviewPagination reviewsOffset={reviewsOffset} totalReviews={totalReviews} reviewsPerPage={REVIEWS_PER_PAGE} />
+        <PaginationButtons nextButton={nextPage} prevButton={prevPage} nextActive={nextActive} prevActive={prevActive} />
+      </Grid>
     </div>
   );
 };

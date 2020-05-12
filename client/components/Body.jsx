@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 const Title = styled.h2`
 `;
@@ -15,14 +17,14 @@ const Body = ({ title, body, recommended }) => (
     { recommended
       ? (
         <p>
-          <i className="fas fa-check-circle" />
+          <FontAwesomeIcon icon={faCheckCircle} />
           <b> Yes, </b>
           I recommend this product.
         </p>
       )
       : (
         <p>
-          <i className="fas fa-times-circle" />
+          <FontAwesomeIcon icon={faTimesCircle} />
           <b> No, </b>
           I do not recommend this product.
         </p>

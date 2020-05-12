@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
 import Avatar from './Avatar';
 import Stars from './Stars';
 import NameDate from './NameDate';
 import Body from './Body';
 import Bars from './Bars';
-import styled from 'styled-components';
 
 const ReviewGrid = styled.li`
   display: grid;
