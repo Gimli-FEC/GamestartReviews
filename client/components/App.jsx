@@ -8,7 +8,11 @@ import DropDown from './DropDown';
 import ReviewPagination from './ReviewPagination';
 import PaginationButtons from './PaginationButtons';
 import Button from './Button';
+import ButtonRed from './ButtonRed';
 import Filters from './Filters';
+import RatingSnapshot from './RatingSnapshot';
+import AverageRatings from './AverageRatings';
+import MostHelpfulReview from './MostHelpfulReview';
 import API_URL from './api';
 
 const Grid = styled.div`
@@ -18,12 +22,17 @@ const Grid = styled.div`
   padding: 20px;
 `;
 
+const ReviewsTitle = styled.div`
+  text-transform: uppercase;
+  font-size: xx-large;
+`;
+
 const App = (props) => {
   const REVIEWS_PER_PAGE = 5;
 
   const [reviews, setReviews] = useState([]);
   const [sortSelected, setSortSelected] = useState('Most Recent');
-  const [productId, setProductId] = useState();
+  const [productId, setProductId] = useState('');
   const [reviewsOffset, setReviewsOffset] = useState(0);
   const [showFilters, setShowFilters] = useState(false);
   const [totalReviews, setTotalReviews] = useState(0);
@@ -117,6 +126,12 @@ const App = (props) => {
   return (
     <div>
       <Grid>
+        <ReviewsTitle>Reviews</ReviewsTitle>
+        <div><ButtonRed buttonText="Write A Review" mouseClick={()=>{}} /></div>
+        <RatingSnapshot />
+        <AverageRatings />
+        <MostHelpfulReview productId={productId} favorable />
+        <MostHelpfulReview productId={productId} favorable={false} />
         <ReviewPagination reviewsOffset={reviewsOffset} totalReviews={totalReviews} reviewsPerPage={REVIEWS_PER_PAGE} />
         <div>
           <Button active buttonText={filterButton} mouseClick={toggleFilters} />
