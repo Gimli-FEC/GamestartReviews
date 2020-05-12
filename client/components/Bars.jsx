@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const RatingBars = styled.span`
-
+  text-align: left;
 `;
 
 const BarHeading = styled.p`
-
+  font-size: .7em;
+  margin: 23px 0 0 0;
 `;
 
 const Bars = ({ ratingGraphics, ratingGameplay, ratingAppeal }) => {

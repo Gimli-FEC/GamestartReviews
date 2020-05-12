@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { string } from 'prop-types';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
@@ -24,25 +24,26 @@ const SelectMenu = styled.div`
   }
 `;
 
-const Selections = styled.ul`
+const Selections = styled.div`
   position: absolute;
-  list-style: none;
+  display: block;
   border: 1px darkgray solid;
   width: 230px;
   padding: 0;
   z-index: 2;
-  li {
+  span {
+    display: block;
     background-color: white;
     padding: 8px 30px 8px 10px;
   }
-  li:hover {
+  span:hover {
     background-color: #da291c;
     color: white;
   }
 `;
 
-const DropDown = ({ handleSortChange }) => {
-  const [selected, setSelected] = useState('Most Recent');
+const DropDown = ({ selectionsArray, handleSortChange }) => {
+  const [selected, setSelected] = useState(selectionsArray[0]);
   const [displayMenu, setDisplayMenu] = useState(false);
 
   const onMenuToggle = () => {
@@ -55,8 +56,6 @@ const DropDown = ({ handleSortChange }) => {
     handleSortChange(e);
   };
 
-  const selections = ['Most Recent', 'Highest to Lowest Rating', 'Lowest to Highest Rating'];
-
   return (
     <div>
       <SelectMenu>
@@ -68,8 +67,19 @@ const DropDown = ({ handleSortChange }) => {
         { displayMenu
         && (
           <Selections>
-            {selections.map(
-              (selection, index) => <li key={index.toString()} onClick={onSelectionClick}>{selection}</li>,
+            {selectionsArray.map(
+              (selection, index) => (
+                <span
+                  role="option"
+                  aria-selected
+                  tabIndex={0}
+                  key={index.toString()}
+                  onClick={onSelectionClick}
+                  onKeyUp={onSelectionClick}
+                >
+                  {selection}
+                </span>
+              ),
             )}
           </Selections>
         )}
@@ -79,6 +89,7 @@ const DropDown = ({ handleSortChange }) => {
 };
 
 DropDown.propTypes = {
+  selectionsArray: PropTypes.arrayOf(string).isRequired,
   handleSortChange: PropTypes.func.isRequired,
 };
 

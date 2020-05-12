@@ -9,6 +9,7 @@ import ReviewPagination from './ReviewPagination';
 import PaginationButtons from './PaginationButtons';
 import Button from './Button';
 import Filters from './Filters';
+import API_URL from './api';
 
 const Grid = styled.div`
   display: grid;
@@ -47,7 +48,7 @@ const App = (props) => {
     if (productId) {
       const sort = (sortSelected === 'Most Recent') ? 'date' : 'rating_overall';
       const order = (sortSelected === 'Lowest to Highest Rating') ? 'ASC' : 'DESC';
-      getFromApi(`/${productId}/${sort}/${order}/${reviewsOffset}/${REVIEWS_PER_PAGE}`, setReviews);
+      getFromApi(`${API_URL}/${productId}/${sort}/${order}/${reviewsOffset}/${REVIEWS_PER_PAGE}`, setReviews);
     }
   };
 
@@ -57,7 +58,7 @@ const App = (props) => {
 
   const getTotalReviewsCount = () => {
     if (productId) {
-      getFromApi(`/count/${productId}`, pullTotalFromJson);
+      getFromApi(`${API_URL}/count/${productId}`, pullTotalFromJson);
     }
   };
 
@@ -75,6 +76,7 @@ const App = (props) => {
         title={review.title}
         body={review.body}
         recommended={review.recommended}
+        verified={review.verified}
         purchaseType={review.purchase_type}
         ratingOverall={review.rating_overall}
         ratingGraphics={review.rating_graphics}
@@ -82,6 +84,7 @@ const App = (props) => {
         ratingAppeal={review.rating_appeal}
         name={review.name}
         age={review.age}
+        gender={review.gender}
         avatar={review.avatar}
       />
     ),
@@ -109,6 +112,7 @@ const App = (props) => {
   const prevActive = !!reviewsOffset;
   const filterButton = <FontAwesomeIcon icon={faBars} />;
   const filters = showFilters && <Filters />;
+  const sorts = ['Most Recent', 'Highest to Lowest Rating', 'Lowest to Highest Rating'];
 
   return (
     <div>
@@ -116,7 +120,7 @@ const App = (props) => {
         <ReviewPagination reviewsOffset={reviewsOffset} totalReviews={totalReviews} reviewsPerPage={REVIEWS_PER_PAGE} />
         <div>
           <Button active buttonText={filterButton} mouseClick={toggleFilters} />
-          <DropDown handleSortChange={handleSortChange} />
+          <DropDown selectionsArray={sorts} handleSortChange={handleSortChange} />
         </div>
         {filters}
       </Grid>

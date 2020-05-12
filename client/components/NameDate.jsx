@@ -7,10 +7,11 @@ const Container = styled.div`
   display: inline-block;
   position: relative;
   text-align: center;
+  font-size: .8em;
 `;
 
 const Name = styled.span`
-  margin: 0 10px;
+  margin: 0 5px 0 7px;
   font-weight: bold;
   &:hover {
     cursor: pointer;
@@ -46,16 +47,16 @@ const NameDate = ({
   const tooltip = show ? <Tooltip onMouseLeave={(e) => toggleNameTooltip(e)}>{name}</Tooltip> : null;
 
   return (
-    <>
+
       <Container>
         <Name name={name} onMouseEnter={(e) => toggleNameTooltip(e)}>
           {name}
         </Name>
         {tooltip}
-      </Container>
       <span> • </span>
       {moment(date).fromNow()}
-    </>
+      </Container>
+
   );
 };
 

@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const RatingStars = styled.span`
-
+  position: relative;
+  top: 4px;
 `;
 
 const Stars = ({ ratingOverall }) => {
