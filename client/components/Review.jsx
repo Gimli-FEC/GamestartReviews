@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import API_URL from './api';
 
 import Avatar from './Avatar';
 import Stars from './Stars';
@@ -10,7 +13,7 @@ import Bars from './Bars';
 
 const ReviewGrid = styled.li`
   display: grid;
-  grid-template-columns: 1fr 5fr 2fr;
+  grid-template-columns: 1fr 13fr 5fr;
   grid-gap: 10px;
   background-color: #fff;
   color: #444;
@@ -19,32 +22,57 @@ const ReviewGrid = styled.li`
   clear: both;
 `;
 
-function Review({
-  avatar, name, age, date, title, body, recommended, purchaseType,
+const RightColumn = styled.div`
+  font-size: 1em;
+  text-align: right;
+  span span:nth-child(1) {
+    color: #da291c;
+  }
+  span span:nth-child(2) {
+    margin-left: 5px;
+    font-weight: 400;
+  }
+`;
+
+const Review = ({
+  avatar, gender, name, age, date, title, body, recommended, verified, purchaseType,
   ratingOverall, ratingGraphics, ratingGameplay, ratingAppeal,
-}) {
+}) => {
+  const verifiedText = verified
+    ? (
+      <span>
+        <span><FontAwesomeIcon icon={faStar} /></span>
+        <span>Verified Purchaser</span>
+      </span>
+    )
+    : null;
+  const avatarPic = gender ? <img src={`${API_URL}/images/female-avatar-small.png`} alt="Female Avatar" /> : <img src={`${API_URL}/images/male-avatar-small.png`} alt="Male Avatar" />;
   return (
     <ReviewGrid>
-      <Avatar avatar={avatar} />
+      {avatarPic}
       <div>
         <Stars ratingOverall={ratingOverall} />
         <NameDate name={name} date={date} age={age} purchaseType={purchaseType} />
         <Body title={title} body={body} recommended={recommended} />
       </div>
-      <Bars
-        ratingGraphics={ratingGraphics}
-        ratingGameplay={ratingGameplay}
-        ratingAppeal={ratingAppeal}
-      />
+      <RightColumn>
+        {verifiedText}
+        <Bars
+          ratingGraphics={ratingGraphics}
+          ratingGameplay={ratingGameplay}
+          ratingAppeal={ratingAppeal}
+        />
+      </RightColumn>
     </ReviewGrid>
   );
-}
+};
 
 Review.propTypes = {
   date: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   recommended: PropTypes.number.isRequired,
+  verified: PropTypes.number.isRequired,
   purchaseType: PropTypes.number.isRequired,
   ratingOverall: PropTypes.number.isRequired,
   ratingGraphics: PropTypes.number.isRequired,
@@ -52,6 +80,7 @@ Review.propTypes = {
   ratingAppeal: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   age: PropTypes.number.isRequired,
+  gender: PropTypes.number.isRequired,
   avatar: PropTypes.string.isRequired,
 };
 
