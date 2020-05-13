@@ -128,8 +128,8 @@ const App = (props) => {
       <Grid>
         <ReviewsTitle>Reviews</ReviewsTitle>
         <div><ButtonRed buttonText="Write A Review" mouseClick={()=>{}} /></div>
-        <RatingSnapshot />
-        <AverageRatings />
+        {/* <RatingSnapshot />
+        <AverageRatings /> */}
         <MostHelpfulReview productId={productId} favorable />
         <MostHelpfulReview productId={productId} favorable={false} />
         <ReviewPagination reviewsOffset={reviewsOffset} totalReviews={totalReviews} reviewsPerPage={REVIEWS_PER_PAGE} />

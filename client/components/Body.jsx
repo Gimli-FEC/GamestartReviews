@@ -15,7 +15,7 @@ const Text = styled.p`
 
 const Recommended = styled.p`
   margin: 30px 5px;
-  font-size: .7em;
+  font-size: .8em;
 `;
 
 const Body = ({ title, body, recommended }) => (
@@ -24,11 +24,11 @@ const Body = ({ title, body, recommended }) => (
     <Text>{body}</Text>
     { recommended
       ? (
-        <p>
+        <Recommended>
           <FontAwesomeIcon icon={faCheckCircle} />
           <b> Yes, </b>
           I recommend this product.
-        </p>
+        </Recommended>
       )
       : (
         <Recommended>

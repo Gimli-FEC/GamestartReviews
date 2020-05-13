@@ -7,6 +7,8 @@ import NameDate from './NameDate';
 import API_URL from './api';
 
 const Container = styled.div`
+  display: flex;
+  flex-direction: column;
   margin: 5px;
 `;
 
@@ -22,6 +24,12 @@ const ReviewTitle = styled.h2`
 const Text = styled.p`
   line-height: 1.4em;
   margin: 25px 20px 25px 5px;
+`;
+
+const Last = styled.div`
+  display: flex;
+  flex-grow: 1;
+  align-items: flex-end;
 `;
 
 const MostHelpfulReview = ({productId, favorable}) => {
@@ -54,7 +62,7 @@ const MostHelpfulReview = ({productId, favorable}) => {
     <div><NameDate name={review.name} date={review.date} age={review.age} purchaseType={review.purchase_type} /></div>
     <ReviewTitle>{review.title}</ReviewTitle>
     <Text>{review.body}</Text>
-    <div>{review.helpful_yes} of {total} people found this helpful</div>
+    <Last><div>{review.helpful_yes} of {total} people found this helpful</div></Last>
   </Container>
   )
 }
