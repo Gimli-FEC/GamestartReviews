@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
@@ -16,7 +16,18 @@ import AverageRatings from './AverageRatings';
 import MostHelpfulReview from './MostHelpfulReview';
 
 import API_URL from './api';
-
+ 
+const GlobalStyle = createGlobalStyle`
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.2;
+    padding: 80px 0;
+    max-width: 1280px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+`;
+ 
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -127,6 +138,7 @@ const App = (props) => {
 
   return (
     <div>
+      <GlobalStyle />
       <Grid>
         <ReviewsTitle>Reviews</ReviewsTitle>
         <div><ButtonRed buttonText="Write A Review" mouseClick={()=>{}} /></div>
