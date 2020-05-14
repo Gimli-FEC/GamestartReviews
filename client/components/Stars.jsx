@@ -5,6 +5,7 @@ import styled from 'styled-components';
 const RatingStars = styled.span`
   position: relative;
   top: 4px;
+  margin: 0 7px 7px 0;
 `;
 
 const Stars = ({ ratingOverall }) => {

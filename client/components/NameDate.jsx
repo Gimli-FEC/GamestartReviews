@@ -8,10 +8,10 @@ const Container = styled.div`
   position: relative;
   text-align: center;
   font-size: .8em;
+  margin-top: 10px;
 `;
 
 const Name = styled.span`
-  margin: 0 5px 0 7px;
   font-weight: bold;
   &:hover {
     cursor: pointer;

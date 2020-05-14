@@ -36,6 +36,8 @@ for (let i = 1; i < 101; i += 1) {
       rating_graphics: Math.floor(Math.random() * 5) + 1,
       rating_gameplay: Math.floor(Math.random() * 5) + 1,
       rating_appeal: Math.floor(Math.random() * 5) + 1,
+      helpful_yes: Math.floor(Math.random() * 500),
+      helpful_no: Math.floor(Math.random() * 500),
     };
 
     db.query('INSERT INTO reviews SET ?', review, (err) => {

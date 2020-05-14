@@ -28,6 +28,8 @@ CREATE TABLE reviews (
     rating_graphics TINYINT(5),
     rating_gameplay TINYINT(5),
     rating_appeal TINYINT(5),
+    helpful_yes SMALLINT,
+    helpful_no SMALLINT,
     PRIMARY KEY (id),
     INDEX u_id (user_id),
     FOREIGN KEY (user_id)
