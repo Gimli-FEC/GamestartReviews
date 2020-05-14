@@ -1,10 +1,9 @@
 import React from 'react';
+import DropDown from './DropDown';
 
 const Filters = () => (
   <div>
-    <DropDown />
-    <DropDown />
-    <DropDown />
+    Filters! Filters! Filters!
   </div>
 );
 
