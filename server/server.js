@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const cors = require('cors');
+// const cors = require('cors');
 const db = require('../database');
 
 const app = express();
@@ -10,9 +10,9 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, '../public')));
 
-app.use(cors({
-  origin: 'http://ec2-54-84-194-85.compute-1.amazonaws.com:3001/',
-}));
+// app.use(cors({
+//   origin: 'http://ec2-54-84-194-85.compute-1.amazonaws.com:3001/',
+// }));
 
 app.get('/:id/:sort/:order/:offset/:numPerPage', ({ params }, res) => {
   db.getReviews(params, (err, data) => {
