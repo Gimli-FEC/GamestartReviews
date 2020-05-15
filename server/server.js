@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.use(cors({
-  origin: 'http://localhost:3001',
+  origin: 'http://ec2-54-84-194-85.compute-1.amazonaws.com:3001/',
 }));
 
 app.get('/:id/:sort/:order/:offset/:numPerPage', ({ params }, res) => {
