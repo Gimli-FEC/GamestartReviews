@@ -1,8 +1,10 @@
 const mysql = require('mysql');
 
 const db = mysql.createConnection({
-  host: 'localhost',
+  host: 'http://ec2-3-84-17-164.compute-1.amazonaws.com/',
   user: 'root',
+  password: 'hrr45-jay',
+  port: 3306,
   database: 'gamestart',
 });
 

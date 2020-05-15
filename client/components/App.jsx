@@ -45,7 +45,7 @@ const App = (props) => {
 
   const [reviews, setReviews] = useState([]);
   const [sortSelected, setSortSelected] = useState('Most Recent');
-  const [productId, setProductId] = useState('');
+  const [productId, setProductId] = useState('3');
   const [reviewsOffset, setReviewsOffset] = useState(0);
   const [showFilters, setShowFilters] = useState(false);
   const [totalReviews, setTotalReviews] = useState(0);
