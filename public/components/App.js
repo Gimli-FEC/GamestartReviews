@@ -78,7 +78,7 @@ var App = function App(props) {
       sortSelected = _useState4[0],
       setSortSelected = _useState4[1];
 
-  var _useState5 = (0, _react.useState)(''),
+  var _useState5 = (0, _react.useState)('3'),
       _useState6 = (0, _slicedToArray2["default"])(_useState5, 2),
       productId = _useState6[0],
       setProductId = _useState6[1];
