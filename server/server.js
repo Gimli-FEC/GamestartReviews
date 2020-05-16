@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 //   origin: 'http://ec2-54-84-194-85.compute-1.amazonaws.com:3001/',
 // }));
 
-app.get(`reviews/:id/:sort/:order/:offset/:numPerPage`, ({ params }, res) => {
+app.get('/:id/:sort/:order/:offset/:numPerPage', ({ params }, res) => {
   db.getReviews(params, (err, data) => {
     if (err) {
       res.sendStatus(500);
@@ -24,7 +24,7 @@ app.get(`reviews/:id/:sort/:order/:offset/:numPerPage`, ({ params }, res) => {
   });
 });
 
-app.get(`reviews/count/:id`, ({ params: { id } }, res) => {
+app.get('/count/:id', ({ params: { id } }, res) => {
   db.getCount(id, (err, data) => {
     if (err) {
       res.sendStatus(500);
