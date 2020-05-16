@@ -58,10 +58,10 @@ var Review = function Review(_ref) {
     icon: _freeSolidSvgIcons.faStar
   })), /*#__PURE__*/_react["default"].createElement("span", null, "Verified Purchaser")) : null;
   var avatarPic = gender ? /*#__PURE__*/_react["default"].createElement("img", {
-    src: "".concat(_api["default"], "/images/female-avatar-small.png"),
+    src: "https://gamestart-images.s3.amazonaws.com/female-avatar-small.png",
     alt: "Female Avatar"
   }) : /*#__PURE__*/_react["default"].createElement("img", {
-    src: "".concat(_api["default"], "/images/male-avatar-small.png"),
+    src: "https://gamestart-images.s3.amazonaws.com/male-avatar-small.png",
     alt: "Male Avatar"
   });
   return /*#__PURE__*/_react["default"].createElement(ReviewGrid, null, avatarPic, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_Stars["default"], {
