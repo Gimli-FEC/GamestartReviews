@@ -1257,7 +1257,7 @@ Stars.propTypes = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var API_URL = ''; // if local service with proxy, http://localhost:3003
+var API_URL = '/reviews'; // if local service with proxy, http://localhost:3003
 
 /* harmony default export */ __webpack_exports__["default"] = (API_URL);
 
@@ -16208,7 +16208,7 @@ if (__webpack_require__(/*! has-symbols */ "./node_modules/has-symbols/index.js"
 	};
 } else {
 	// Symbol is not available, native or shammed
-	var isArray = __webpack_require__(/*! isarray */ "./node_modules/es-get-iterator/node_modules/isarray/index.js");
+	var isArray = __webpack_require__(/*! isarray */ "./node_modules/isarray/index.js");
 	var isString = __webpack_require__(/*! is-string */ "./node_modules/is-string/index.js");
 	var GetIntrinsic = __webpack_require__(/*! es-abstract/GetIntrinsic */ "./node_modules/es-abstract/GetIntrinsic.js");
 	var $Map = GetIntrinsic('%Map%', true);
@@ -16373,22 +16373,6 @@ if (__webpack_require__(/*! has-symbols */ "./node_modules/has-symbols/index.js"
 }
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../process/browser.js */ "./node_modules/process/browser.js")))
-
-/***/ }),
-
-/***/ "./node_modules/es-get-iterator/node_modules/isarray/index.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/es-get-iterator/node_modules/isarray/index.js ***!
-  \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var toString = {}.toString;
-
-module.exports = Array.isArray || function (arr) {
-  return toString.call(arr) == '[object Array]';
-};
-
 
 /***/ }),
 
@@ -25155,6 +25139,22 @@ if (hasSymbols) {
 		return  false && false;
 	};
 }
+
+
+/***/ }),
+
+/***/ "./node_modules/isarray/index.js":
+/*!***************************************!*\
+  !*** ./node_modules/isarray/index.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var toString = {}.toString;
+
+module.exports = Array.isArray || function (arr) {
+  return toString.call(arr) == '[object Array]';
+};
 
 
 /***/ }),
