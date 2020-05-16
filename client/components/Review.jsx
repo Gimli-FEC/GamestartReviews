@@ -46,7 +46,7 @@ const Review = ({
       </span>
     )
     : null;
-  const avatarPic = gender ? <img src={`/images/female-avatar-small.png`} alt="Female Avatar" /> : <img src={`/images/male-avatar-small.png`} alt="Male Avatar" />;
+  const avatarPic = gender ? <img src={`https://gamestart-images.s3.amazonaws.com/female-avatar-small.png`} alt="Female Avatar" /> : <img src={`https://gamestart-images.s3.amazonaws.com/male-avatar-small.png`} alt="Male Avatar" />;
   return (
     <ReviewGrid>
       {avatarPic}
