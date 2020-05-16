@@ -1257,7 +1257,7 @@ Stars.propTypes = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var API_URL = ''; // if local service with proxy, http://localhost:3003
+var API_URL = '/reviews'; // if local service with proxy, http://localhost:3003
 
 /* harmony default export */ __webpack_exports__["default"] = (API_URL);
 
