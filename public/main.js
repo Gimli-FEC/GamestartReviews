@@ -364,7 +364,7 @@ var App = function App(props) {
     return setShowFilters(!showFilters);
   };
 
-  var nextActive = reviewsOffset + REVIEWS_PER_PAGE < totalReviews;
+  var nextActive = reviewsOffset + REVIEWS_PER_PAGE <= totalReviews;
   var prevActive = !!reviewsOffset;
   var filterButton = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
     icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faBars"]
