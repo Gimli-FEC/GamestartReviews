@@ -3,10 +3,10 @@ import styled from 'styled-components';
 
 const Row = styled.div`
   display: flex;
-  margin: 5px 5px 5px 2px;
+  margin: 15px 5px 5px 2px;
   width: 75%;
   span:first-of-type {
-    width: 15%;
+    width: 45%;
   }
   meter {
     width: 100%;

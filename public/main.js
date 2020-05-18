@@ -361,7 +361,7 @@ __webpack_require__.r(__webpack_exports__);
 var Row = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.withConfig({
   displayName: "AverageBars__Row",
   componentId: "sc-1zvqh2-0"
-})(["display:flex;margin:5px 5px 5px 2px;width:75%;span:first-of-type{width:15%;}meter{width:100%;height:10px;margin:auto;}meter::-webkit-meter-optimum-value{background:#da291c;}span:nth-of-type(2){width:100px;text-align:center;}"]);
+})(["display:flex;margin:15px 5px 5px 2px;width:75%;span:first-of-type{width:45%;}meter{width:100%;height:10px;margin:auto;}meter::-webkit-meter-optimum-value{background:#da291c;}span:nth-of-type(2){width:100px;text-align:center;}"]);
 
 var AverageBars = function AverageBars(_ref) {
   var name = _ref.name,
@@ -446,7 +446,7 @@ __webpack_require__.r(__webpack_exports__);
 var Row = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.withConfig({
   displayName: "AverageStars__Row",
   componentId: "bxe9vo-0"
-})(["display:flex;margin:5px 5px 5px 2px;width:75%;span:first-of-type{width:15%;}meter{width:100%;height:10px;margin:auto;}meter::-webkit-meter-optimum-value{background:#da291c;}span:nth-of-type(2){width:100px;text-align:center;}"]);
+})(["display:flex;margin:15px 5px 5px 2px;width:75%;span:first-of-type{width:45%;}meter{width:100%;height:10px;margin:auto;}meter::-webkit-meter-optimum-value{background:#da291c;}span:nth-of-type(2){width:100px;text-align:center;}"]);
 
 var AverageStars = function AverageStars(_ref) {
   var rating = _ref.rating;
