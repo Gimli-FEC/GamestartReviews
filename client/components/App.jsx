@@ -191,13 +191,13 @@ const App = (props) => {
 
   const nextPage = () => {
     const atTheEnd = totalReviews - REVIEWS_PER_PAGE < 0 ? 0 : totalReviews - REVIEWS_PER_PAGE
-    const newOffset = reviewsOffset + REVIEWS_PER_PAGE > totalReviews ? atTheEnd : reviewsOffset + REVIEWS_PER_PAGE;
+    const newOffset = (reviewsOffset + REVIEWS_PER_PAGE) >= totalReviews ? atTheEnd : reviewsOffset + REVIEWS_PER_PAGE;
     setReviewsOffset(newOffset);
   };
 
   const toggleFilters = () => setShowFilters(!showFilters);
 
-  const nextActive = reviewsOffset + REVIEWS_PER_PAGE <= totalReviews;
+  const nextActive = reviewsOffset + REVIEWS_PER_PAGE < totalReviews;
   const prevActive = !!reviewsOffset;
   const filterButton = <FontAwesomeIcon icon={faBars} />;
   const filters = showFilters && <Filters />;
