@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Row = styled.div`
   display: flex;
@@ -22,8 +23,23 @@ const Row = styled.div`
   }
 `;
 
-const RatingRow = ({stars, width, total}) => (
-  <Row><span>{stars} &#9733;</span><meter value={width}/><span>{total}</span></Row>
+const RatingRow = ({ stars, width, total }) => (
+  <Row>
+    <span>
+      {stars}
+      &#9733;
+    </span>
+    <meter value={width} />
+    <span>
+      {total}
+    </span>
+  </Row>
 );
+
+RatingRow.propTypes = {
+  stars: PropTypes.number.isRequired,
+  width: PropTypes.string.isRequired,
+  total: PropTypes.number.isRequired,
+};
 
 export default RatingRow;

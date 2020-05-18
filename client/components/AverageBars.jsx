@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Row = styled.div`
   display: flex;
@@ -22,11 +23,20 @@ const Row = styled.div`
   }
 `;
 
-const AverageBars = ({name, rating}) => {
-  const width = (rating/5).toString();
+const AverageBars = ({ name, rating }) => {
+  const width = (rating / 5).toString();
   return (
-    <Row><span>{name}</span><meter value={width}/><span>{rating}</span></Row>
+    <Row>
+      <span>{name}</span>
+      <meter value={width} />
+      <span>{rating}</span>
+    </Row>
   );
-}
+};
+
+AverageBars.propTypes = {
+  name: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+};
 
 export default AverageBars;

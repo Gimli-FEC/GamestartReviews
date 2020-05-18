@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-import API_URL from './api';
+// import API_URL from './api';
 
-import Avatar from './Avatar';
+// import Avatar from './Avatar';
 import Stars from './Stars';
 import NameDate from './NameDate';
 import Body from './Body';
@@ -35,7 +35,7 @@ const RightColumn = styled.div`
 `;
 
 const Review = ({
-  avatar, gender, name, age, date, title, body, recommended, verified, purchaseType,
+  gender, name, age, date, title, body, recommended, verified, purchaseType,
   ratingOverall, ratingGraphics, ratingGameplay, ratingAppeal,
 }) => {
   const verifiedText = verified
@@ -46,7 +46,7 @@ const Review = ({
       </span>
     )
     : null;
-  const avatarPic = gender ? <img src={`https://gamestart-images.s3.amazonaws.com/female-avatar-small.png`} alt="Female Avatar" /> : <img src={`https://gamestart-images.s3.amazonaws.com/male-avatar-small.png`} alt="Male Avatar" />;
+  const avatarPic = gender ? <img src="https://gamestart-images.s3.amazonaws.com/female-avatar-small.png" alt="Female Avatar" /> : <img src="https://gamestart-images.s3.amazonaws.com/male-avatar-small.png" alt="Male Avatar" />;
   return (
     <ReviewGrid>
       {avatarPic}
@@ -81,7 +81,7 @@ Review.propTypes = {
   name: PropTypes.string.isRequired,
   age: PropTypes.number.isRequired,
   gender: PropTypes.number.isRequired,
-  avatar: PropTypes.string.isRequired,
+  // avatar: PropTypes.string.isRequired,
 };
 
 export default Review;
