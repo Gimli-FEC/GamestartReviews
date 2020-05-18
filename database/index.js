@@ -23,7 +23,7 @@ function getReviews({
 }
 
 function getCount({ id, stars }, cb) {
-  const starString = stars ? ` AND rating_overall = ${stars}` : '';
+  const starString = (stars > 0) && (stars < 6) ? ` AND rating_overall = ${stars}` : ``;
   db.query(`SELECT count(*) from reviews r, users u WHERE r.user_id = u.id AND r.product_id = ${id}${starString}`, (err, data) => {
     if (err) {
       console.log(`Error retrieving records from database: ${err}`);
