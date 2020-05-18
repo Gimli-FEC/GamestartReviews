@@ -26,7 +26,7 @@ app.get(`${API_URL}/:id/:sort/:order/:offset/:numPerPage`, ({ params }, res) => 
   });
 });
 
-app.get(`${API_URL}/count/:id/:stars`, ({ params }, res) => {
+app.get(`${API_URL}/count/:id/:stars?`, ({ params }, res) => {
   db.getCount(params, (err, data) => {
     if (err) {
       res.sendStatus(500);
