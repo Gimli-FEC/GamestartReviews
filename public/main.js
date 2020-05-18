@@ -186,6 +186,31 @@ var App = function App(props) {
       totalReviews = _useState12[0],
       setTotalReviews = _useState12[1];
 
+  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(0),
+      _useState14 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_useState13, 2),
+      fiveStars = _useState14[0],
+      setFiveStars = _useState14[1];
+
+  var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(0),
+      _useState16 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_useState15, 2),
+      fourStars = _useState16[0],
+      setFourStars = _useState16[1];
+
+  var _useState17 = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(0),
+      _useState18 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_useState17, 2),
+      threeStars = _useState18[0],
+      setThreeStars = _useState18[1];
+
+  var _useState19 = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(0),
+      _useState20 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_useState19, 2),
+      twoStars = _useState20[0],
+      setTwoStars = _useState20[1];
+
+  var _useState21 = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(0),
+      _useState22 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_useState21, 2),
+      oneStars = _useState22[0],
+      setOneStars = _useState22[1];
+
   var getUrlParams = function getUrlParams() {
     var urlParams = new URLSearchParams(window.location.search);
     var id = urlParams.get('id');
@@ -224,6 +249,75 @@ var App = function App(props) {
     }
   };
 
+  var pullFiveStarsFromJson = function pullFiveStarsFromJson(data) {
+    setFiveStars(data[0]['count(*)']);
+  };
+
+  var getFiveStarsCount = function getFiveStarsCount() {
+    if (productId) {
+      getFromApi("".concat(_api__WEBPACK_IMPORTED_MODULE_16__["default"], "/count/").concat(productId, "/5"), pullFiveStarsFromJson);
+    }
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_2__["useEffect"])(function () {
+    return getFiveStarsCount(productId);
+  }, [productId]);
+
+  var pullFourStarsFromJson = function pullFourStarsFromJson(data) {
+    setFourStars(data[0]['count(*)']);
+  };
+
+  var getFourStarsCount = function getFourStarsCount() {
+    if (productId) {
+      getFromApi("".concat(_api__WEBPACK_IMPORTED_MODULE_16__["default"], "/count/").concat(productId, "/4"), pullFourStarsFromJson);
+    }
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_2__["useEffect"])(function () {
+    return getFourStarsCount(productId);
+  }, [productId]);
+
+  var pullThreeStarsFromJson = function pullThreeStarsFromJson(data) {
+    setThreeStars(data[0]['count(*)']);
+  };
+
+  var getThreeStarsCount = function getThreeStarsCount() {
+    if (productId) {
+      getFromApi("".concat(_api__WEBPACK_IMPORTED_MODULE_16__["default"], "/count/").concat(productId, "/3"), pullThreeStarsFromJson);
+    }
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_2__["useEffect"])(function () {
+    return getThreeStarsCount(productId);
+  }, [productId]);
+
+  var pullTwoStarsFromJson = function pullTwoStarsFromJson(data) {
+    setTwoStars(data[0]['count(*)']);
+  };
+
+  var getTwoStarsCount = function getTwoStarsCount() {
+    if (productId) {
+      getFromApi("".concat(_api__WEBPACK_IMPORTED_MODULE_16__["default"], "/count/").concat(productId, "/2"), pullTwoStarsFromJson);
+    }
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_2__["useEffect"])(function () {
+    return getTwoStarsCount(productId);
+  }, [productId]);
+
+  var pullOneStarsFromJson = function pullOneStarsFromJson(data) {
+    setOneStars(data[0]['count(*)']);
+  };
+
+  var getOneStarsCount = function getOneStarsCount() {
+    if (productId) {
+      getFromApi("".concat(_api__WEBPACK_IMPORTED_MODULE_16__["default"], "/count/").concat(productId, "/1"), pullOneStarsFromJson);
+    }
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_2__["useEffect"])(function () {
+    return getOneStarsCount(productId);
+  }, [productId]);
   Object(react__WEBPACK_IMPORTED_MODULE_2__["useEffect"])(function () {
     getReviewsForId(getUrlParams());
   }, [productId, sortSelected, reviewsOffset]);
@@ -280,7 +374,13 @@ var App = function App(props) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(GlobalStyle, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(Grid, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(ReviewsTitle, null, "Reviews"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_ButtonRed__WEBPACK_IMPORTED_MODULE_11__["default"], {
     buttonText: "Write A Review",
     mouseClick: function mouseClick() {}
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_RatingSnapshot__WEBPACK_IMPORTED_MODULE_13__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_AverageRatings__WEBPACK_IMPORTED_MODULE_14__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_MostHelpfulReview__WEBPACK_IMPORTED_MODULE_15__["default"], {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_RatingSnapshot__WEBPACK_IMPORTED_MODULE_13__["default"], {
+    fiveStars: fiveStars,
+    fourStars: fourStars,
+    threeStars: threeStars,
+    twoStars: twoStars,
+    oneStars: oneStars
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_AverageRatings__WEBPACK_IMPORTED_MODULE_14__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_MostHelpfulReview__WEBPACK_IMPORTED_MODULE_15__["default"], {
     productId: productId,
     favorable: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_MostHelpfulReview__WEBPACK_IMPORTED_MODULE_15__["default"], {
@@ -1082,26 +1182,28 @@ var Title = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].p.withConf
 })(["font-size:.9em;font-weight:bold;"]);
 
 var RatingSnapshot = function RatingSnapshot(_ref) {
-  var rows = _ref.rows;
-  rows = [{
+  var fiveStars = _ref.fiveStars,
+      fourStars = _ref.fourStars,
+      threeStars = _ref.threeStars,
+      twoStars = _ref.twoStars,
+      oneStars = _ref.oneStars;
+  var overallTotal = fiveStars + fourStars + threeStars + twoStars + oneStars;
+  var rows = [{
     stars: 5,
-    total: 435
+    total: fiveStars
   }, {
     stars: 4,
-    total: 115
+    total: fourStars
   }, {
     stars: 3,
-    total: 55
+    total: threeStars
   }, {
     stars: 2,
-    total: 18
+    total: twoStars
   }, {
     stars: 1,
-    total: 33
+    total: oneStars
   }];
-  var overallTotal = rows.reduce(function (sum, row) {
-    return sum + row.total;
-  }, 0);
   rows.forEach(function (row) {
     row.width = (row.total / overallTotal).toString();
   });
