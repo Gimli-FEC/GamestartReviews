@@ -366,7 +366,7 @@ var Row = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.withConf
 var AverageBars = function AverageBars(_ref) {
   var name = _ref.name,
       rating = _ref.rating;
-  var width = rating / 5 * 100;
+  var width = (rating / 5).toString();
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("meter", {
     value: width
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, rating));
@@ -450,7 +450,7 @@ var Row = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.withConf
 
 var AverageStars = function AverageStars(_ref) {
   var rating = _ref.rating;
-  var width = rating / 5 * 100;
+  var width = (rating / 5).toString();
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Overall"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("meter", {
     value: width
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, rating));

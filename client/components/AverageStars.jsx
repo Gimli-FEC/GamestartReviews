@@ -23,7 +23,7 @@ const Row = styled.div`
 `;
 
 const AverageStars = ({rating}) => {
-  const width = rating/5 * 100;
+  const width = (rating/5).toString();
   return (
     <Row><span>Overall</span><meter value={width}/><span>{rating}</span></Row>
   );
