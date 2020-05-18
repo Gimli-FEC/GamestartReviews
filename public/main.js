@@ -153,7 +153,7 @@ var ReviewsTitle = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div
   componentId: "sc-16nyf4f-1"
 })(["text-transform:uppercase;font-size:xx-large;"]);
 
-var App = function App(props) {
+var App = function App() {
   var REVIEWS_PER_PAGE = 5;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])([]),
@@ -413,37 +413,6 @@ var App = function App(props) {
 
 /***/ }),
 
-/***/ "./client/components/Avatar.jsx":
-/*!**************************************!*\
-  !*** ./client/components/Avatar.jsx ***!
-  \**************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
-
-
-
-var Avatar = function Avatar(_ref) {
-  var avatar = _ref.avatar;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    alt: "user-avatar",
-    src: avatar
-  }));
-};
-
-Avatar.propTypes = {
-  avatar: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired
-};
-/* harmony default export */ __webpack_exports__["default"] = (Avatar);
-
-/***/ }),
-
 /***/ "./client/components/AverageBars.jsx":
 /*!*******************************************!*\
   !*** ./client/components/AverageBars.jsx ***!
@@ -456,6 +425,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 var Row = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.withConfig({
@@ -472,6 +444,10 @@ var AverageBars = function AverageBars(_ref) {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, rating));
 };
 
+AverageBars.propTypes = {
+  name: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string.isRequired,
+  rating: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.number.isRequired
+};
 /* harmony default export */ __webpack_exports__["default"] = (AverageBars);
 
 /***/ }),
@@ -505,13 +481,13 @@ var Title = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].p.withConf
 
 var AverageRatings = function AverageRatings() {
   var bars = [{
-    name: "Graphics",
+    name: 'Graphics',
     rating: 3.5
   }, {
-    name: "Gameplay",
+    name: 'Gameplay',
     rating: 4.2
   }, {
-    name: "Lasting Appeal",
+    name: 'Lasting Appeal',
     rating: 4.7
   }];
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Title, null, "Average Customer Ratings"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AverageStars__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -870,8 +846,6 @@ DropDown.propTypes = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _DropDown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DropDown */ "./client/components/DropDown.jsx");
-
 
 
 var Filters = function Filters() {
@@ -970,14 +944,15 @@ var MostHelpfulReview = function MostHelpfulReview(_ref) {
     return getMostHelpfulReview();
   }, [productId]);
   var total = review.helpful_yes + review.helpful_no;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(Title, null, "Most Helpful ", favorable ? 'Favorable' : 'Critical', " Review"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Stars__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  var helpfulPeople = "".concat(review.helpful_yes, " of ").concat(total, " people found this helpful");
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(Title, null, "Most Helpful", favorable ? ' Favorable ' : ' Critical ', "Review"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Stars__WEBPACK_IMPORTED_MODULE_4__["default"], {
     ratingOverall: review.rating_overall
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_NameDate__WEBPACK_IMPORTED_MODULE_5__["default"], {
     name: review.name,
     date: review.date,
     age: review.age,
     purchaseType: review.purchase_type
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(ReviewTitle, null, review.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(Text, null, review.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(Last, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, review.helpful_yes, " of ", total, " people found this helpful")));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(ReviewTitle, null, review.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(Text, null, review.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(Last, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, helpfulPeople)));
 };
 
 MostHelpfulReview.propTypes = {
@@ -1026,9 +1001,7 @@ var Tooltip = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].span.wit
 
 var NameDate = function NameDate(_ref) {
   var name = _ref.name,
-      date = _ref.date,
-      age = _ref.age,
-      purchaseType = _ref.purchaseType;
+      date = _ref.date;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
       _useState2 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_useState, 2),
@@ -1054,9 +1027,9 @@ var NameDate = function NameDate(_ref) {
 
 NameDate.propTypes = {
   name: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string.isRequired,
-  date: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string.isRequired,
-  age: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.number.isRequired,
-  purchaseType: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.number.isRequired
+  date: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string.isRequired // age: PropTypes.number.isRequired,
+  // purchaseType: PropTypes.number.isRequired,
+
 };
 /* harmony default export */ __webpack_exports__["default"] = (NameDate);
 
@@ -1136,6 +1109,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 var Row = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.withConfig({
@@ -1147,11 +1123,16 @@ var RatingRow = function RatingRow(_ref) {
   var stars = _ref.stars,
       width = _ref.width,
       total = _ref.total;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, stars, " \u2605"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("meter", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, stars, "\u2605"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("meter", {
     value: width
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, total));
 };
 
+RatingRow.propTypes = {
+  stars: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.number.isRequired,
+  width: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string.isRequired,
+  total: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.number.isRequired
+};
 /* harmony default export */ __webpack_exports__["default"] = (RatingRow);
 
 /***/ }),
@@ -1168,7 +1149,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _RatingRow__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RatingRow */ "./client/components/RatingRow.jsx");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _RatingRow__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./RatingRow */ "./client/components/RatingRow.jsx");
+
 
 
 
@@ -1205,10 +1189,11 @@ var RatingSnapshot = function RatingSnapshot(_ref) {
     total: oneStars
   }];
   rows.forEach(function (row) {
+    // eslint-disable-next-line no-param-reassign
     row.width = (row.total / overallTotal).toString();
   });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Title, null, "Rating Snapshot"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Select a row below to filter reviews."), rows.map(function (row, index) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RatingRow__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RatingRow__WEBPACK_IMPORTED_MODULE_3__["default"], {
       key: index.toString(),
       stars: row.stars,
       width: row.width,
@@ -1217,6 +1202,13 @@ var RatingSnapshot = function RatingSnapshot(_ref) {
   }));
 };
 
+RatingSnapshot.propTypes = {
+  fiveStars: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.number.isRequired,
+  fourStars: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.number.isRequired,
+  threeStars: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.number.isRequired,
+  twoStars: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.number.isRequired,
+  oneStars: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.number.isRequired
+};
 /* harmony default export */ __webpack_exports__["default"] = (RatingSnapshot);
 
 /***/ }),
@@ -1237,18 +1229,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
 /* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
-/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./api */ "./client/components/api.js");
-/* harmony import */ var _Avatar__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Avatar */ "./client/components/Avatar.jsx");
-/* harmony import */ var _Stars__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Stars */ "./client/components/Stars.jsx");
-/* harmony import */ var _NameDate__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./NameDate */ "./client/components/NameDate.jsx");
-/* harmony import */ var _Body__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Body */ "./client/components/Body.jsx");
-/* harmony import */ var _Bars__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Bars */ "./client/components/Bars.jsx");
+/* harmony import */ var _Stars__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Stars */ "./client/components/Stars.jsx");
+/* harmony import */ var _NameDate__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./NameDate */ "./client/components/NameDate.jsx");
+/* harmony import */ var _Body__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Body */ "./client/components/Body.jsx");
+/* harmony import */ var _Bars__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Bars */ "./client/components/Bars.jsx");
 
 
 
 
-
-
+ // import API_URL from './api';
+// import Avatar from './Avatar';
 
 
 
@@ -1264,8 +1254,7 @@ var RightColumn = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div.
 })(["font-size:1em;text-align:right;span span:nth-child(1){color:#da291c;}span span:nth-child(2){margin-left:5px;font-weight:400;}"]);
 
 var Review = function Review(_ref) {
-  var avatar = _ref.avatar,
-      gender = _ref.gender,
+  var gender = _ref.gender,
       name = _ref.name,
       age = _ref.age,
       date = _ref.date,
@@ -1288,18 +1277,18 @@ var Review = function Review(_ref) {
     src: "https://gamestart-images.s3.amazonaws.com/male-avatar-small.png",
     alt: "Male Avatar"
   });
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ReviewGrid, null, avatarPic, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Stars__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ReviewGrid, null, avatarPic, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Stars__WEBPACK_IMPORTED_MODULE_5__["default"], {
     ratingOverall: ratingOverall
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NameDate__WEBPACK_IMPORTED_MODULE_8__["default"], {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NameDate__WEBPACK_IMPORTED_MODULE_6__["default"], {
     name: name,
     date: date,
     age: age,
     purchaseType: purchaseType
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Body__WEBPACK_IMPORTED_MODULE_9__["default"], {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Body__WEBPACK_IMPORTED_MODULE_7__["default"], {
     title: title,
     body: body,
     recommended: recommended
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(RightColumn, null, verifiedText, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Bars__WEBPACK_IMPORTED_MODULE_10__["default"], {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(RightColumn, null, verifiedText, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Bars__WEBPACK_IMPORTED_MODULE_8__["default"], {
     ratingGraphics: ratingGraphics,
     ratingGameplay: ratingGameplay,
     ratingAppeal: ratingAppeal
@@ -1319,8 +1308,8 @@ Review.propTypes = {
   ratingAppeal: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number.isRequired,
   name: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired,
   age: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number.isRequired,
-  gender: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number.isRequired,
-  avatar: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired
+  gender: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number.isRequired // avatar: PropTypes.string.isRequired,
+
 };
 /* harmony default export */ __webpack_exports__["default"] = (Review);
 
