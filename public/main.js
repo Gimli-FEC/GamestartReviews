@@ -344,6 +344,38 @@ Avatar.propTypes = {
 
 /***/ }),
 
+/***/ "./client/components/AverageBars.jsx":
+/*!*******************************************!*\
+  !*** ./client/components/AverageBars.jsx ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+
+
+var Row = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.withConfig({
+  displayName: "AverageBars__Row",
+  componentId: "sc-1zvqh2-0"
+})(["display:flex;margin:5px 5px 5px 2px;width:75%;span:first-of-type{width:15%;}meter{width:100%;height:10px;margin:auto;}meter::-webkit-meter-optimum-value{background:#da291c;}span:nth-of-type(2){width:100px;text-align:center;}"]);
+
+var AverageBars = function AverageBars(_ref) {
+  var name = _ref.name,
+      rating = _ref.rating;
+  var width = rating / 5 * 100;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("meter", {
+    value: width
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, rating));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (AverageBars);
+
+/***/ }),
+
 /***/ "./client/components/AverageRatings.jsx":
 /*!**********************************************!*\
   !*** ./client/components/AverageRatings.jsx ***!
@@ -356,6 +388,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _AverageBars__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AverageBars */ "./client/components/AverageBars.jsx");
+/* harmony import */ var _AverageStars__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AverageStars */ "./client/components/AverageStars.jsx");
+
+
 
 
 var Container = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.withConfig({
@@ -368,10 +404,59 @@ var Title = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].p.withConf
 })(["font-size:.9em;font-weight:bold;"]);
 
 var AverageRatings = function AverageRatings() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Title, null, "Average Customer Ratings"));
+  var bars = [{
+    name: "Graphics",
+    rating: 3.5
+  }, {
+    name: "Gameplay",
+    rating: 4.2
+  }, {
+    name: "Lasting Appeal",
+    rating: 4.7
+  }];
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Title, null, "Average Customer Ratings"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AverageStars__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    rating: "4.8"
+  }), bars.map(function (bar, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AverageBars__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      key: index.toString(),
+      name: bar.name,
+      rating: bar.rating
+    });
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (AverageRatings);
+
+/***/ }),
+
+/***/ "./client/components/AverageStars.jsx":
+/*!********************************************!*\
+  !*** ./client/components/AverageStars.jsx ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+
+
+var Row = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.withConfig({
+  displayName: "AverageStars__Row",
+  componentId: "bxe9vo-0"
+})(["display:flex;margin:5px 5px 5px 2px;width:75%;span:first-of-type{width:15%;}meter{width:100%;height:10px;margin:auto;}meter::-webkit-meter-optimum-value{background:#da291c;}span:nth-of-type(2){width:100px;text-align:center;}"]);
+
+var AverageStars = function AverageStars(_ref) {
+  var rating = _ref.rating;
+  var width = rating / 5 * 100;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Overall"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("meter", {
+    value: width
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, rating));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (AverageStars);
 
 /***/ }),
 
