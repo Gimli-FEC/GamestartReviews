@@ -35,8 +35,8 @@ const Tooltip = styled.span`
 const NameDate = ({
   name,
   date,
-  age,
-  purchaseType,
+  // age,
+  // purchaseType,
 }) => {
   const [show, setShow] = useState(false);
 
@@ -44,27 +44,26 @@ const NameDate = ({
     setShow(!show);
   };
 
-  const tooltip = show ? <Tooltip onMouseLeave={(e) => toggleNameTooltip(e)}>{name}</Tooltip> : null;
+  const tooltip = show
+    ? <Tooltip onMouseLeave={(e) => toggleNameTooltip(e)}>{name}</Tooltip> : null;
 
   return (
-
-      <Container>
-        <Name name={name} onMouseEnter={(e) => toggleNameTooltip(e)}>
-          {name}
-        </Name>
-        {tooltip}
+    <Container>
+      <Name name={name} onMouseEnter={(e) => toggleNameTooltip(e)}>
+        {name}
+      </Name>
+      {tooltip}
       <span> • </span>
       {moment(date).fromNow()}
-      </Container>
-
+    </Container>
   );
 };
 
 NameDate.propTypes = {
   name: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
-  age: PropTypes.number.isRequired,
-  purchaseType: PropTypes.number.isRequired,
+  // age: PropTypes.number.isRequired,
+  // purchaseType: PropTypes.number.isRequired,
 };
 
 export default NameDate;

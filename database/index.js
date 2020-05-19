@@ -1,8 +1,10 @@
 const mysql = require('mysql');
 
 const db = mysql.createConnection({
-  host: 'localhost',
+  host: '52.91.162.130',
   user: 'root',
+  password: 'hrr45-jay',
+  port: 3306,
   database: 'gamestart',
 });
 
@@ -20,8 +22,10 @@ function getReviews({
   });
 }
 
-function getCount(id, cb) {
-  db.query(`SELECT count(*) from reviews r, users u WHERE r.user_id = u.id AND r.product_id = ${id}`, (err, data) => {
+function getCount({ id, stars }, cb) {
+  let queryString = `SELECT count(*) from reviews r, users u WHERE r.user_id = u.id AND r.product_id = ${id}`;
+  queryString = stars ? `${queryString} AND rating_overall = ${stars}` : queryString;
+  db.query(queryString, (err, data) => {
     if (err) {
       console.log(`Error retrieving records from database: ${err}`);
       cb(err);

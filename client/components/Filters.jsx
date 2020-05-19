@@ -1,5 +1,4 @@
 import React from 'react';
-import DropDown from './DropDown';
 
 const Filters = () => (
   <div>

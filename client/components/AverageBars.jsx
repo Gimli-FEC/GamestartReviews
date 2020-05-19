@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 
 const Row = styled.div`
   display: flex;
-  margin: 5px 5px 5px 2px;
+  margin: 15px 5px 5px 2px;
   width: 75%;
   span:first-of-type {
-    width: 15%;
+    width: 45%;
   }
   meter {
     width: 100%;
@@ -23,23 +23,20 @@ const Row = styled.div`
   }
 `;
 
-const RatingRow = ({ stars, width, total }) => (
-  <Row>
-    <span>
-      {stars}
-      &#9733;
-    </span>
-    <meter value={width} />
-    <span>
-      {total}
-    </span>
-  </Row>
-);
-
-RatingRow.propTypes = {
-  stars: PropTypes.number.isRequired,
-  width: PropTypes.string.isRequired,
-  total: PropTypes.number.isRequired,
+const AverageBars = ({ name, rating }) => {
+  const width = (rating / 5).toString();
+  return (
+    <Row>
+      <span>{name}</span>
+      <meter value={width} />
+      <span>{rating}</span>
+    </Row>
+  );
 };
 
-export default RatingRow;
+AverageBars.propTypes = {
+  name: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+};
+
+export default AverageBars;

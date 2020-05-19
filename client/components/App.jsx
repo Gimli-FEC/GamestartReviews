@@ -16,7 +16,7 @@ import AverageRatings from './AverageRatings';
 import MostHelpfulReview from './MostHelpfulReview';
 
 import API_URL from './api';
- 
+
 const GlobalStyle = createGlobalStyle`
   body {
     font-family: Arial, Helvetica, sans-serif;
@@ -27,7 +27,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 `;
- 
+
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -40,15 +40,20 @@ const ReviewsTitle = styled.div`
   font-size: xx-large;
 `;
 
-const App = (props) => {
+const App = () => {
   const REVIEWS_PER_PAGE = 5;
 
   const [reviews, setReviews] = useState([]);
   const [sortSelected, setSortSelected] = useState('Most Recent');
-  const [productId, setProductId] = useState('');
+  const [productId, setProductId] = useState('3');
   const [reviewsOffset, setReviewsOffset] = useState(0);
   const [showFilters, setShowFilters] = useState(false);
   const [totalReviews, setTotalReviews] = useState(0);
+  const [fiveStars, setFiveStars] = useState(0);
+  const [fourStars, setFourStars] = useState(0);
+  const [threeStars, setThreeStars] = useState(0);
+  const [twoStars, setTwoStars] = useState(0);
+  const [oneStars, setOneStars] = useState(0);
 
   const getUrlParams = () => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -83,6 +88,66 @@ const App = (props) => {
       getFromApi(`${API_URL}/count/${productId}`, pullTotalFromJson);
     }
   };
+
+  const pullFiveStarsFromJson = (data) => {
+    setFiveStars(data[0]['count(*)']);
+  };
+
+  const getFiveStarsCount = () => {
+    if (productId) {
+      getFromApi(`${API_URL}/count/${productId}/5`, pullFiveStarsFromJson);
+    }
+  };
+
+  useEffect(() => getFiveStarsCount(productId), [productId]);
+
+  const pullFourStarsFromJson = (data) => {
+    setFourStars(data[0]['count(*)']);
+  };
+
+  const getFourStarsCount = () => {
+    if (productId) {
+      getFromApi(`${API_URL}/count/${productId}/4`, pullFourStarsFromJson);
+    }
+  };
+
+  useEffect(() => getFourStarsCount(productId), [productId]);
+
+  const pullThreeStarsFromJson = (data) => {
+    setThreeStars(data[0]['count(*)']);
+  };
+
+  const getThreeStarsCount = () => {
+    if (productId) {
+      getFromApi(`${API_URL}/count/${productId}/3`, pullThreeStarsFromJson);
+    }
+  };
+
+  useEffect(() => getThreeStarsCount(productId), [productId]);
+
+  const pullTwoStarsFromJson = (data) => {
+    setTwoStars(data[0]['count(*)']);
+  };
+
+  const getTwoStarsCount = () => {
+    if (productId) {
+      getFromApi(`${API_URL}/count/${productId}/2`, pullTwoStarsFromJson);
+    }
+  };
+
+  useEffect(() => getTwoStarsCount(productId), [productId]);
+
+  const pullOneStarsFromJson = (data) => {
+    setOneStars(data[0]['count(*)']);
+  };
+
+  const getOneStarsCount = () => {
+    if (productId) {
+      getFromApi(`${API_URL}/count/${productId}/1`, pullOneStarsFromJson);
+    }
+  };
+
+  useEffect(() => getOneStarsCount(productId), [productId]);
 
   useEffect(() => {
     getReviewsForId(getUrlParams());
@@ -123,8 +188,9 @@ const App = (props) => {
   };
 
   const nextPage = () => {
-    const atTheEnd = totalReviews - REVIEWS_PER_PAGE < 0 ? 0 : totalReviews - REVIEWS_PER_PAGE
-    const newOffset = reviewsOffset + REVIEWS_PER_PAGE > totalReviews ? atTheEnd : reviewsOffset + REVIEWS_PER_PAGE;
+    const atTheEnd = totalReviews - REVIEWS_PER_PAGE < 0 ? 0 : totalReviews - REVIEWS_PER_PAGE;
+    const newOffset = (reviewsOffset + REVIEWS_PER_PAGE)
+      >= totalReviews ? atTheEnd : reviewsOffset + REVIEWS_PER_PAGE;
     setReviewsOffset(newOffset);
   };
 
@@ -141,12 +207,22 @@ const App = (props) => {
       <GlobalStyle />
       <Grid>
         <ReviewsTitle>Reviews</ReviewsTitle>
-        <div><ButtonRed buttonText="Write A Review" mouseClick={()=>{}} /></div>
-        <RatingSnapshot />
+        <div><ButtonRed buttonText="Write A Review" mouseClick={() => {}} /></div>
+        <RatingSnapshot
+          fiveStars={fiveStars}
+          fourStars={fourStars}
+          threeStars={threeStars}
+          twoStars={twoStars}
+          oneStars={oneStars}
+        />
         <AverageRatings />
         <MostHelpfulReview productId={productId} favorable />
         <MostHelpfulReview productId={productId} favorable={false} />
-        <ReviewPagination reviewsOffset={reviewsOffset} totalReviews={totalReviews} reviewsPerPage={REVIEWS_PER_PAGE} />
+        <ReviewPagination
+          reviewsOffset={reviewsOffset}
+          totalReviews={totalReviews}
+          reviewsPerPage={REVIEWS_PER_PAGE}
+        />
         <div>
           <Button active buttonText={filterButton} mouseClick={toggleFilters} />
           <DropDown selectionsArray={sorts} handleSortChange={handleSortChange} />
@@ -155,8 +231,17 @@ const App = (props) => {
       </Grid>
       {listReviews}
       <Grid>
-        <ReviewPagination reviewsOffset={reviewsOffset} totalReviews={totalReviews} reviewsPerPage={REVIEWS_PER_PAGE} />
-        <PaginationButtons nextButton={nextPage} prevButton={prevPage} nextActive={nextActive} prevActive={prevActive} />
+        <ReviewPagination
+          reviewsOffset={reviewsOffset}
+          totalReviews={totalReviews}
+          reviewsPerPage={REVIEWS_PER_PAGE}
+        />
+        <PaginationButtons
+          nextButton={nextPage}
+          prevButton={prevPage}
+          nextActive={nextActive}
+          prevActive={prevActive}
+        />
       </Grid>
     </div>
   );

@@ -32,9 +32,11 @@ const Last = styled.div`
   align-items: flex-end;
 `;
 
-const MostHelpfulReview = ({productId, favorable}) => {
-  const [ review, setReview ] = useState({name: '', date: '2020-01-01', age: 2, purchase_type: 1, rating_overall: 3});
-  
+const MostHelpfulReview = ({ productId, favorable }) => {
+  const [review, setReview] = useState({
+    name: '', date: '2020-01-01', age: 2, purchase_type: 1, rating_overall: 3,
+  });
+
   const getFromApi = (pathString, cb) => {
     fetch(pathString, {
       method: 'GET',
@@ -54,18 +56,34 @@ const MostHelpfulReview = ({productId, favorable}) => {
   useEffect(() => getMostHelpfulReview(), [productId]);
 
   const total = review.helpful_yes + review.helpful_no;
-  
+  const helpfulPeople = `${review.helpful_yes} of ${total} people found this helpful`;
+
   return (
-  <Container>
-    <Title>Most Helpful {favorable ? 'Favorable' : 'Critical'} Review</Title>
-    <div><Stars ratingOverall={review.rating_overall} /></div>
-    <div><NameDate name={review.name} date={review.date} age={review.age} purchaseType={review.purchase_type} /></div>
-    <ReviewTitle>{review.title}</ReviewTitle>
-    <Text>{review.body}</Text>
-    <Last><div>{review.helpful_yes} of {total} people found this helpful</div></Last>
-  </Container>
-  )
-}
+    <Container>
+      <Title>
+        Most Helpful
+        {favorable ? ' Favorable ' : ' Critical '}
+        Review
+      </Title>
+      <div><Stars ratingOverall={review.rating_overall} /></div>
+      <div>
+        <NameDate
+          name={review.name}
+          date={review.date}
+          age={review.age}
+          purchaseType={review.purchase_type}
+        />
+      </div>
+      <ReviewTitle>{review.title}</ReviewTitle>
+      <Text>{review.body}</Text>
+      <Last>
+        <div>
+          {helpfulPeople}
+        </div>
+      </Last>
+    </Container>
+  );
+};
 
 MostHelpfulReview.propTypes = {
   productId: PropTypes.string.isRequired,
