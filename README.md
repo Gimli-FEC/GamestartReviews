@@ -16,11 +16,10 @@
 
 ## Usage
 
-> Some usage instructions
+> Requires npm.
+> Requires MySQL database with user: root. Database configuration can be changed in database/index.js
 
 ## Requirements
-
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 - Node > 6.13.0
 - Webpack + Babel
@@ -35,7 +34,7 @@ Basic setup from within the root directory:
 
 ```sh
 npm install
-mysql -u root < database/schema.sql
+mysql -u root -p < database/schema.sql
 npm run seed
 ```
 To start express server: 
