@@ -9,7 +9,7 @@
   "scripts": {
     "build": "babel client -d public",
     "start": "nodemon server/index.js",
-    "react-dev": "webpack --watch --mode=development",
+    "react-dev": "webpack --watch --mode=production",
     "seed": "node database/seeding.js",
     "test": "jest",
     "test:watch": "jest --watch"
