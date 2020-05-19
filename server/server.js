@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 
 const API_URL = '/reviews';
 
-app.use(express.static('https://d2szs2yjcxos27.cloudfront.net'));
+app.use(express.static(path.join(__dirname, '../public')));
 
 // app.use(cors({
 //   origin: 'http://ec2-54-84-194-85.compute-1.amazonaws.com:3001/',
