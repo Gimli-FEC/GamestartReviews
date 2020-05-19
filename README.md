@@ -1,13 +1,12 @@
-# GameStart
+# GameStart: Reviews Module
 
-> Project description
+> The reviews module is the service for the GameStart app which consists of three different services and a proxy server. The reviews module features the ability to sort, paginate, and feature reviews from a SQL database with potentially 100s of reviews per product.
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/Gimli-FEC/gamestart-product-overview
+  - https://github.com/Gimli-FEC/Jasper-service
+  - https://github.com/Gimli-FEC/jay-proxy
 
 ## Table of Contents
 
@@ -23,17 +22,30 @@
 
 An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
-- Node 6.13.0
-- etc
+- Node > 6.13.0
+- Webpack + Babel
+- React / React-Dom > 16
+- MySQL
 
 ## Development
 
 ### Installing Dependencies
 
-From within the root directory:
+Basic setup from within the root directory:
 
 ```sh
-npm install -g webpack
 npm install
+mysql -u root < database/schema.sql
+npm run seed
+```
+To start express server: 
+
+```sh
+npm start
 ```
 
+To start build:
+
+```sh
+npm run react-dev
+```
